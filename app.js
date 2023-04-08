@@ -17,119 +17,43 @@ function playRound(e) {
     let playerSelection = this.value.toLowerCase();
     console.log(`computer choice is ${computerSelection}`)
     console.log(`player selection is ${playerSelection}`)
-    // playerSelection = playerSelection.toLowerCase();
-
+    
     if (playerSelection === 'rock' && computerSelection === 'sciccors'
         || playerSelection === 'sciccors' && computerSelection === 'paper'
         || playerSelection === 'paper' && computerSelection === 'rock') {
-        console.log('player wins');
+        console.log('player wins')
+        playerscore += 1
+        player.textContent = player.textContent.slice(0,-1) + playerscore
     }
     else if (playerSelection === computerSelection) {
-        console.log('draw')
+        console.log('draw')        
     }
-
     else {
         console.log('computer wins');
+        computerscore += 1
+        comp.textContent = comp.textContent.slice(0,-1) + computerscore
     }
 }
 
-const btns = document.querySelectorAll('button')
+let playerscore = 0
+let computerscore = 0
 
+const btns = document.querySelectorAll('button')
+const body = document.querySelector('body');
+const div = document.createElement('div')
+
+const comp = document.createElement('p')
+comp.setAttribute('id', 'computer-score')
+comp.textContent = `computer score is 0`
+
+const player = document.createElement('p')
+player.setAttribute('id','player-score')
+player.textContent = `player score is 0`
+
+body.appendChild(div)
+div.appendChild(comp)
+div.appendChild(player)
 
 btns.forEach((btn) => {
     btn.addEventListener('click', playRound)
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function game(){
-//     let playerScore = 0
-//     let compScore = 0
-//     for(let i = 0; i<5; i++){
-//         const computerSelection = getComputerChoice();
-//         let q = prompt('rock, paper or sciccor?')
-
-//         if(playRound(q, computerSelection) === 'user') {
-//             playerScore += 1
-//             console.log(`you win round ${i+1}`)
-//         }
-//         else if(playRound(q,computerSelection)==='computer') {
-//             compScore += 1
-//             console.log(`you lose round ${i+1}`)
-//         }
-//         else{
-//             console.log(`round ${i+1} is drawed`)
-//         }
-//     }
-//     if(playerScore>compScore){
-//         console.log('You win the game')
-//     }
-//     else if(playerScore<compScore){
-//         console.log('you lose the game')
-//     }
-//     else{
-//         console.log('game draw')
-//     }
-// }
-
