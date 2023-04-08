@@ -12,11 +12,16 @@ function getComputerChoice() {
     }
 }
 function playRound(e) {
-
+    round += 1
+    console.log(round)
+    if (round>5) {
+        declareWinner();
+        return
+    }
     let computerSelection = getComputerChoice();
     let playerSelection = this.value.toLowerCase();
-    console.log(`computer choice is ${computerSelection}`)
-    console.log(`player selection is ${playerSelection}`)
+    // console.log(`computer choice is ${computerSelection}`)
+    // console.log(`player selection is ${playerSelection}`)
     
     if (playerSelection === 'rock' && computerSelection === 'sciccors'
         || playerSelection === 'sciccors' && computerSelection === 'paper'
@@ -35,8 +40,18 @@ function playRound(e) {
     }
 }
 
+function declareWinner(){
+    const para = document.createElement('p')
+    para.textContent = ''
+    if(computerscore>playerscore) para.textContent += `computer wins`
+    else if(playerscore>computerscore) para.textContent += `player wins`
+    else para.textContent = 'Match draw'
+    div.appendChild(para)
+}
+
 let playerscore = 0
 let computerscore = 0
+let round = 0
 
 const btns = document.querySelectorAll('button')
 const body = document.querySelector('body');
@@ -55,5 +70,6 @@ div.appendChild(comp)
 div.appendChild(player)
 
 btns.forEach((btn) => {
+
     btn.addEventListener('click', playRound)
 })
