@@ -1,6 +1,5 @@
 function getComputerChoice() {
     let n = Math.floor(Math.random() * 3) + 1;
-    // console.log(n)
     if (n == 1) {
         return 'rock'
     }
@@ -11,7 +10,8 @@ function getComputerChoice() {
         return 'sciccors'
     }
 }
-function playRound(e) {
+
+function playRound() {
     round += 1
     console.log(round)
     if (round == 5) {
@@ -23,9 +23,6 @@ function playRound(e) {
     }
     let computerSelection = getComputerChoice();
     let playerSelection = this.value.toLowerCase();
-    // console.log(`computer choice is ${computerSelection}`)
-    // console.log(`player selection is ${playerSelection}`)
-
     if (playerSelection === 'rock' && computerSelection === 'sciccors'
         || playerSelection === 'sciccors' && computerSelection === 'paper'
         || playerSelection === 'paper' && computerSelection === 'rock') {
@@ -91,6 +88,5 @@ div.appendChild(comp)
 div.appendChild(player)
 
 btns.forEach((btn) => {
-
     btn.addEventListener('click', playRound)
 })
